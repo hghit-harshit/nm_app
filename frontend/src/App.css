@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+/* General styling for body */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('your-scientific-background-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Main container holding the cards */
+.main-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Card container for the 3 cards */
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Individual card styling */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  width: 250px;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+/* Hover effect to make card pop out */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Content inside the card */
+.card-content {
+  padding: 20px;
+}
+
+/* Card title and description styling */
+.card h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.card p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Optional: Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
   }
 }

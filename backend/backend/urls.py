@@ -20,9 +20,11 @@ from rest_framework import routers
 from main_site import views
 
 router = routers.DefaultRouter()
-router.register(r'main_sites', views.main_siteView, 'main_site')
+router.register(r'main_site', views.main_siteView, 'main_site')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('', include('main_site.urls')),
+    path('api/my_func/', views.my_func, name='my_func'), 
     
 ]

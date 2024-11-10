@@ -143,7 +143,7 @@ def plot_results(P, y0, y_end, step_size):
     # Encode the image to base64 so it can be sent as a string
     image_base64 = base64.b64encode(buf.read()).decode('utf-8')
     buf.close()
-    plt.show()
+    #plt.show()
     return image_base64  # Return the encoded image string
 
 # Example usage:
@@ -152,4 +152,4 @@ initial_value = 0  # Initial value for u
 final_value = 1  # Final value for u
 step_size = 0.000001  # Step size for the methods
 
-#plot_results(P_value, initial_value, final_value, step_size)
+#img = plot_results(P_value, initial_value, final_value, step_size)

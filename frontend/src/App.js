@@ -1,31 +1,51 @@
-// src/App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import MainPage from './components/MainPage';
+import Assignment1 from './pages/Assignment1';
+import Assignment2 from './pages/Assignment2';
+import Assignment3 from './pages/Assignment3';
+import "./App.css"
+function PlotDisplay() {
+  const [image, setImage] = useState(null);
 
-function App() {
-    const [image, setImage] = useState(null);
+  useEffect(() => {
+    axios.get('api/generate-plot/')
+      .then(response => {
+        console.log("API Response:", response.data);
+        setImage(response.data.image);
+      })
+      .catch(error => console.error("Error fetching the plot:", error));
+  }, []);
 
-    const handleButtonClick = () => {
-        axios.post("http://127.0.0.1:8000/api/call-function/")  // Ensure the URL is correct
-            .then(response => {
-                console.log("Response from Django function:", response.data);
-                setImage(`data:image/png;base64,${response.data.image}`);  // Display image in React
-            })
-            .catch(error => console.error("Error calling function:", error));
-    };
-
-    return (
-        <div>
-            <h1>Call Python Function and Display Plot</h1>
-            <button onClick={handleButtonClick}>Generate Plot</button>
-            {image && (
-                <div>
-                    <h2>Generated Plot:</h2>
-                    <img src={image} alt="Generated Plot" />
-                </div>
-            )}
-        </div>
-    );
+  return (
+    <div>
+      {image ? (
+        <img src={`data:image/png;base64,${image}`} alt="Plot" />
+      ) : (
+        <p>Loading plot...</p>
+      )}
+    </div>
+  );
 }
 
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/assignment1" element={<Assignment1 />} />
+        <Route path="/assignment2" element={<Assignment2 />} />
+        <Route path="/assignment3" element={<Assignment3 />} />
+      </Routes>
+    </Router>
+  );
+};
+
 export default App;
+
+
+
+
+//export default PlotDisplay;
