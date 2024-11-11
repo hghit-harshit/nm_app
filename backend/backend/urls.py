@@ -25,6 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('', include('main_site.urls')),
-    path('api/my_func/', views.my_func, name='my_func'), 
+    #path('api/my_func/', views.my_func, name='my_func'), 
     
 ]

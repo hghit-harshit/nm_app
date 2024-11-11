@@ -1,0 +1,64 @@
+.results-container {
+    background-color: #ffffff;
+    color: #004d00;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 1.5em;
+    color: #008000;
+  }
+  
+  .section {
+    margin-top: 20px;
+  }
+  
+  .matrix {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .matrix-value {
+    background-color: #e6ffe6;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 2px;
+    color: #004d00;
+  }
+  
+  .vector-list, .section ul {
+    display: flex;
+    gap: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #e6ffe6;
+    padding: 4px;
+    border-radius: 4px;
+    margin: 2px;
+  }
+  
+  .section h3 {
+    color: #004d00;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+  

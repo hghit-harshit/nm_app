@@ -103,11 +103,24 @@ def shooting_method(P, y0, y_end, step_size):
 
     return (v0_lower + v0_upper) / 2
 
+
+def u_y(y, P):
+    if P == -2:
+        return y**2
+    elif P == 0:
+        return y
+    elif P == 2:
+        return -y**2 + 2*y
+    elif P == 5:
+        return -(5/2) * y**2 + 3*y
+    elif P == 10:
+        return -5 * y**2 + 6*y
 # Function to calculate eigenvalues for both methods
 def calculate_eigenvalues(mat):
    return eigenvalues_via_qr(mat)
 
 # Function to plot the results for a given value of P
+'''
 def plot_results(P, y0, y_end, step_size):
     # Find the correct initial guess for v0 using the shooting method
     v0_correct = shooting_method(P, y0, y_end, step_size)
@@ -153,3 +166,4 @@ final_value = 1  # Final value for u
 step_size = 0.000001  # Step size for the methods
 
 #img = plot_results(P_value, initial_value, final_value, step_size)
+'''

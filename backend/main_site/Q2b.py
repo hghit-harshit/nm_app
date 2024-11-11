@@ -1,6 +1,8 @@
 import numpy as np
-import equilibria
+from .equilibria import *
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 
 # Utility functions for polynomial operations
 def multiply_by_x(poly):
@@ -82,48 +84,8 @@ def calculate_weights(nodes):
         weights[i] = integrate_lagrange_basis(i, nodes)
     return weights
 
-# Main function
-def main():
-    flag = 1
-    
-        
-    order = int(input("Enter the order of the Legendre polynomial (1 to 44): "))
-    if order < 1 or order > 44:
-        flag = 0
-        #print("Please enter a number between 1 and 44.")
-        
+
     
 
-    coefficients = legendre_polynomial(order)
 
-    companion_mat = companion_matrix(coefficients)
 
-    eigenvalues = np.linalg.eigvals(companion_mat)
-    weights = calculate_weights(eigenvalues)
-    if flag == 1:
-        print(f"\nCompanion Matrix for P_{order}(x):\n{companion_mat}\n")
-    print(f"Nodes and Weights for Legendre Polynomial of Order {order}:\n")
-    print(f"{'Node #':<10}{'Node Value':<20}{'Weight':<20}")
-    print("-" * 50)
-    for i, (node, weight) in enumerate(zip(eigenvalues, weights), start=1):
-        print(f"{i:<10}{node:<20.6f}{weight:<20.6f}")
-
-    print(f"\nSum of Weights: {np.sum(weights):.6f}")
-    if flag == 1:
-        plot_weights_vs_nodes(eigenvalues, weights)
-
-def plot_weights_vs_nodes(nodes, weights):
-    """Plots the weights against the  part of the nodes."""
-    nodes = [node for node in nodes]
-    plt.figure(figsize=(10, 6))
-    plt.scatter(nodes, weights, color='blue', marker='o')
-    plt.title('Weights vs Nodes using Companion Matrix and Lagrangian Interpolation')
-    plt.xlabel('Roots (Nodes)')
-    plt.ylabel('Weights')
-    plt.axhline(0, color='black', linewidth=0.5, ls='--')
-    plt.axvline(0, color='black', linewidth=0.5, ls='--')
-    plt.grid()
-    plt.show()
-
-if __name__ == "__main__":
-    main()

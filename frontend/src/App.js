@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+//import { Link } from 'react-router-dom';
+//import axios from 'axios';
 import MainPage from './components/MainPage';
 import Assignment1 from './pages/Assignment1';
 import Assignment2 from './pages/Assignment2';
 import Assignment3 from './pages/Assignment3';
 import "./App.css"
-function PlotDisplay() {
+/*function PlotDisplay() {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function PlotDisplay() {
       )}
     </div>
   );
-}
+}*/
 
 const App = () => {
   return (

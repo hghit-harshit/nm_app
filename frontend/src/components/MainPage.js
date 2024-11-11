@@ -12,7 +12,7 @@ const MainPage = () => {
 
       <div className="card-container">
         <div className="card">
-          <Link to="/pages/assignment1">
+          <Link to="/assignment1">
             <div className="card-content">
               <h2>Assignment 1</h2>
               <p>Click to view details of Assignment 1</p>
@@ -21,7 +21,7 @@ const MainPage = () => {
         </div>
 
         <div className="card">
-          <Link to="/pages/assignment2">
+          <Link to="assignment2">
             <div className="card-content">
               <h2>Assignment 2</h2>
               <p>Click to view details of Assignment 2</p>
@@ -30,7 +30,7 @@ const MainPage = () => {
         </div>
 
         <div className="card">
-          <Link to="/pages/assignment3">
+          <Link to="assignment3">
             <div className="card-content">
               <h2>Assignment 3</h2>
               <p>Click to view details of Assignment 3</p>
