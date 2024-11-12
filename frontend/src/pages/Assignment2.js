@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { getCsrfToken } from '../csrf'; 
+//import { getCsrfToken } from '../csrf'; 
 import '../styles/Assignment2.css';
 
 const Assignment2 = () => {
@@ -20,7 +20,7 @@ const Assignment2 = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('http://localhost:8000/calculate-gauss-legendre/', { n: degree });
+      const response = await axios.post('http://localhost:8000/assignment2_view/', { n: degree });
       const data = response.data;
 
       setMethod1Results(data.method1);

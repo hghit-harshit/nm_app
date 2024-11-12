@@ -30,7 +30,7 @@ def get_csrf_token(request):
     return JsonResponse({'csrfToken': csrf_token})
 
 @csrf_exempt
-def process_csv(request):
+def assignment1_view(request):
     if request.method == 'POST':
         # Handle CSV file upload
         uploaded_file = request.FILES.get('file')
@@ -98,7 +98,7 @@ def generate_plot(nodes, weights, method=1):
 
 # View for calculating and returning results
 @csrf_exempt
-def calculate_gauss_legendre(request):
+def assignment2_view(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)

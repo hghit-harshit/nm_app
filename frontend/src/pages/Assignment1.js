@@ -26,7 +26,7 @@ const Assignment1 = () => {
     formData.append('file', csvFile);
 
     try {
-      const response = await axios.post('http://localhost:8000/process-csv/', formData, {
+      const response = await axios.post('http://localhost:8000/assignment1_view/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'X-CSRFToken': getCsrfToken(),
