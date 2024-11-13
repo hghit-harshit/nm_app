@@ -1,0 +1,13 @@
+{
+    "BACKEND_URL": "http://127.0.0.1:8000",
+    "inputMatrixText": "def read_matrix_and_vectors(file_content):\n    file = io.StringIO(file_content)\n    reader = csv.reader(file)\n    A = []\n    b1 = []\n    b2 = []\n    for row in reader:\n        A.append(list(map(float, row)))\n    b1 = A.pop()\n    b2 = A.pop()\n    A = np.array(A)\n    b1 = np.array(b1)\n    b2 = np.array(b2)\n    return A, b1, b2",
+    "b1MatrixText": "def read_matrix_and_vectors(file_content):\n    file = io.StringIO(file_content)\n    reader = csv.reader(file)\n    A = []\n    b1 = []\n    b2 = []\n    for row in reader:\n        A.append(list(map(float, row)))\n    b1 = A.pop()\n    b2 = A.pop()\n    A = np.array(A)\n    b1 = np.array(b1)\n    b2 = np.array(b2)\n    return A, b1, b2",
+    "b2MatrixText": "def read_matrix_and_vectors(file_content):\n    file = io.StringIO(file_content)\n    reader = csv.reader(file)\n    A = []\n    b1 = []\n    b2 = []\n    for row in reader:\n        A.append(list(map(float, row)))\n    b1 = A.pop()\n    b2 = A.pop()\n    A = np.array(A)\n    b1 = np.array(b1)\n    b2 = np.array(b2)\n    return A, b1, b2",
+    "determinantModalText": "det_A = np.prod(eigenvalues_A)",
+    "iterationsModalText": "def eigenvalues_via_qr(A, tolerance=1e-10, max_iterations=1000):\n    \"\"\"Finds eigenvalues using the QR decomposition method,\n        returns the eigenvalues and the number of iteration that were needed.\"\"\"\n    n = A.shape[0]\n    iterations = 0\n    diff = np.inf\n    while diff > tolerance and iterations < max_iterations:\n        Q, R = qr(A)\n        A_next = R @ Q\n        diff = np.max(np.abs(np.diag(A_next) - np.diag(A)))\n        A = A_next\n        iterations += 1\n    eigenvalues = np.diag(A)\n    return eigenvalues, iterations",
+    "conditionNumberText": "cond_A = np.max(eigenvalues_A) / np.min(eigenvalues_A)",
+    "hilbertConditionNumberText": "cond_hilbert = cond(hilbert_5)",
+    "eigenvaluesModalText": "def eigenvalues_via_qr(A, tolerance=1e-10, max_iterations=1000):\n    \"\"\"Finds eigenvalues using the QR decomposition method,\n        returns the eigenvalues and the number of iteration that were needed.\"\"\"\n    n = A.shape[0]\n    iterations = 0\n    diff = np.inf\n    while diff > tolerance and iterations < max_iterations:\n        Q, R = qr(A)\n        A_next = R @ Q\n        diff = np.max(np.abs(np.diag(A_next) - np.diag(A)))\n        A = A_next\n        iterations += 1\n    eigenvalues = np.diag(A)\n    return eigenvalues, iterations",
+    "solutionX1Text": "if det_A != 0:\n    x1 = solve(A, b1)\n    x2 = solve(A, b2)\nelse:\n    x1, x2 = None, None",
+    "solutionX2Text": "if det_A != 0:\n    x1 = solve(A, b1)\n    x2 = solve(A, b2)\nelse:\n    x1, x2 = None, None"
+}
