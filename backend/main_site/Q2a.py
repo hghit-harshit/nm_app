@@ -1,7 +1,9 @@
 
-import equilibria
+from .equilibria import *
 import math
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 
 
 
@@ -76,24 +78,7 @@ def compute_weights(n, nodes):
 
 
 
-def plot_weights_vs_nodes(nodes, weights):
-    """
-    Plots the weights against the real part of the nodes.
-    
-    Parameters:
-        nodes (list): List of nodes (roots of the Legendre polynomial).
-        weights (list): List of weights corresponding to each node.
-    """
-    real_nodes = [node.real for node in nodes]
-    plt.figure(figsize=(8, 5))
-    plt.scatter(real_nodes, weights, color='blue', marker='o')
-    plt.title('Weights vs Nodes for Gauss-Legendre Quadrature')
-    plt.xlabel('Roots')
-    plt.ylabel('Weights')
-    plt.axhline(0, color='black', linewidth=0.5, ls='--')
-    plt.axvline(0, color='black', linewidth=0.5, ls='--')
-    plt.grid()
-    plt.show()
+
 
 
 
@@ -114,27 +99,10 @@ def gauss_legendre_quadrature(n):
     nodes = np.linalg.eigvals(companion_matrix)
     weights = compute_weights(n, nodes)
 
-    # Print the table of nodes and weights
-    print("\nGauss-Legendre Quadrature Nodes and Weights")
-    print("="*40)
-    print(f"{'Node #':<10}{'Node Value':<20}{'Weight':<10}")
-    print("="*40)
-    for i, (node, weight) in enumerate(zip(nodes, weights), start=1):
-        print(f"{i:<10}{node.real:<20.6f}{weight:<10.6f}")
-    print("="*40)
 
-    print( f"The sum of all the weights is : {np.sum(weights)}")
-
-    plot_weights_vs_nodes(nodes, weights)
-    
     return nodes, weights
 
 
 
 
-if __name__ == "__main__":
-    try:
-        n = int(input("Enter the order of the Legendre polynomial: "))
-        gauss_legendre_quadrature(n)
-    except ValueError:
-        print("Please enter a valid integer for the order of the polynomial.")
+

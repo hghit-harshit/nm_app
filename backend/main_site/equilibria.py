@@ -2,9 +2,10 @@
 import numpy as np
 from scipy.linalg import lu, inv, hilbert, eigvals
 from numpy.linalg import cond, det, solve, qr
+import io
+import csv
 
-
-
+'''
 def read_matrix_and_vectors(file_name):
     """Reading matrix A and vectors b1 and b2 from a file"""
 
@@ -15,8 +16,27 @@ def read_matrix_and_vectors(file_name):
     b2 = data[6, :]   # second vector
 
     return A, b1, b2
-
-
+'''
+def read_matrix_and_vectors(file_content):
+    # Convert the string content to a file-like object
+    file = io.StringIO(file_content)
+    reader = csv.reader(file)
+    
+    A = []
+    b1 = []
+    b2 = []
+    
+    for row in reader:
+        A.append(list(map(float, row)))  # Assuming the matrix is numeric
+    # For simplicity, assuming b1 and b2 are the last two rows or vectors in the CSV
+    b1 = A.pop()  # Last row of matrix A becomes b1
+    b2 = A.pop()  # Second to last row becomes b2
+    
+    A = np.array(A)
+    b1 = np.array(b1)
+    b2 = np.array(b2)
+    
+    return A, b1, b2
 
 
 
@@ -228,7 +248,7 @@ def solve_tridiagonal(A, rhs):
 
 
 
-
+'''
 def print_section(title):
     """Define a simple function to print headers and dividers"""
 
@@ -246,3 +266,4 @@ def print_subsection(title):
     print(f"\n{'-'*60}")
     print(f"{title:^60}")
     print(f"{'-'*60}")
+'''
