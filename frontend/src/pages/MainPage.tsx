@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Typography, Box } from "@mui/material";
-import { DataArray, Equalizer, Scale } from "@mui/icons-material";
+import { DataArray, Functions, Timeline } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import AssignmentCard from "../components/AssignmentCard";
 import FullScreenLoadingOverlay from "../components/FullScreenLoadingOverlay";
@@ -28,13 +28,13 @@ export default function Component() {
     {
       title: "Assignment 2",
       description: "Determine roots and weights of Gauss-Legendre polynomial using eigenvalues.",
-      icon: <Scale sx={{ fontSize: 30 }} />,
+      icon: <Functions sx={{ fontSize: 30 }} />,
       number: 2,
     },
     {
       title: "Assignment 3",
       description: "Solve differential equations using numerical methods.",
-      icon: <Equalizer sx={{ fontSize: 30 }} />,
+      icon: <Timeline sx={{ fontSize: 30 }} />,
       number: 3,
     },
   ];
@@ -46,11 +46,12 @@ export default function Component() {
           variant="h2"
           component="h1"
           sx={{
-            fontFamily: "Rubik Spray Paint",
+            fontFamily: "Markazi Text",
             fontStyle: "normal",
             color: "#333",
             mb: 2,
-            fontSize: "3.5rem",
+            fontSize: "4.5rem",
+            fontWeight: 400,
             letterSpacing: "2.5px",
           }}
         >
