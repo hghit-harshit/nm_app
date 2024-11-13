@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source backend/venv/bin/activate
+
 cd frontend
 npm start &
 
