@@ -1,22 +1,22 @@
-import { useState } from "react";
-import { Typography, Box } from "@mui/material";
-import { DataArray, Functions, Timeline } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import AssignmentCard from "../components/AssignmentCard";
-import FullScreenLoadingOverlay from "../components/FullScreenLoadingOverlay";
-import { StyledContainer } from "../styles/StyledContainer";
+import { useState } from "react"
+import { Typography, Box } from "@mui/material"
+import { DataArray, Functions, Timeline } from "@mui/icons-material"
+import { useNavigate } from "react-router-dom"
+import AssignmentCard from "../components/AssignmentCard"
+import FullScreenLoadingOverlay from "../components/FullScreenLoadingOverlay"
+import { StyledContainer } from "../styles/StyledContainer"
 
 export default function Component() {
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const handleClick = (path: any) => {
-    setLoading(true);
+    setLoading(true)
     setTimeout(() => {
-      setLoading(false);
-      navigate(path);
-    }, 500);
-  };
+      setLoading(false)
+      navigate(path)
+    }, 500)
+  }
 
   const assignments = [
     {
@@ -37,7 +37,7 @@ export default function Component() {
       icon: <Timeline sx={{ fontSize: 30 }} />,
       number: 3,
     },
-  ];
+  ]
 
   return (
     <StyledContainer maxWidth="lg">
@@ -94,5 +94,5 @@ export default function Component() {
 
       {loading && <FullScreenLoadingOverlay />}
     </StyledContainer>
-  );
+  )
 }

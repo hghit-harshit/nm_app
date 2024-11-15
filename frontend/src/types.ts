@@ -27,6 +27,29 @@ export interface AppBarProps {
   title: string
 }
 
+export interface NodesWeightsTableProps {
+  data: GaussLegendreResults | LangrangeResults | null
+  type: 'gl' | 'l'
+  setOpenModal: (value: SetStateAction<boolean>) => void
+  handleCodeButtonClick: (content: string) => void
+  setOpenDialog: (value: SetStateAction<boolean>) => void
+}
+
+export interface PlotProps {
+  data: GaussLegendreResults | LangrangeResults | null
+  type: 'gl' | 'l'
+  handleCodeButtonClick: (content: string) => void
+  setOpenDialog: (value: SetStateAction<boolean>) => void
+}
+
+export interface MatrixModalProps {
+  openModal: boolean
+  setOpenModal: (value: SetStateAction<boolean>) => void
+  langrangeData: LangrangeResults | null
+  handleCodeButtonClick: (content: string) => void
+  setOpenDialog: (value: SetStateAction<boolean>) => void
+}
+
 export interface Results {
   matrix: number[][]
   b1_matrix: number[]
@@ -38,4 +61,17 @@ export interface Results {
   condition_number_hilbert: number
   solution_x1: number[]
   solution_x2: number[]
+}
+
+export interface GaussLegendreResults {
+  nodes: number[]
+  weights: number[]
+  plot_url: string
+}
+
+export interface LangrangeResults {
+  nodes: number[]
+  weights: number[]
+  plot_url: string
+  matrix: number[][]
 }
