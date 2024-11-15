@@ -1,7 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import {
   Box,
-  Container,
   Grid,
   TextField,
   Switch,
@@ -18,6 +17,7 @@ import Plot from "../components/Plot";
 import MatrixModal from "../components/MatrixModal";
 import CodeDialog from "../components/CodeDialog";
 import ResultCard from "../components/ResultCard";
+import { StyledContainer } from "../styles/StyledContainer";
 
 const Assignment2 = () => {
   const [n, setN] = useState("20");
@@ -64,8 +64,8 @@ const Assignment2 = () => {
     <>
       <StyledAppBar title="Assignment 2" />
 
-      <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-        <Box sx={{ textAlign: "center", mb: 4 }}>
+      <StyledContainer maxWidth="xl" sx={{ '::before': { top: '67px' } }}>
+        <Box sx={{ textAlign: "center", mb: 4, mt: -5 }}>
           <Grid
             container
             spacing={2}
@@ -149,7 +149,7 @@ const Assignment2 = () => {
             </Grid>
           </Grid>
         )}
-      </Container>
+      </StyledContainer>
 
       <MatrixModal
         openModal={openModal}

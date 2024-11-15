@@ -93,6 +93,18 @@ export default function Component() {
       </Box>
 
       {loading && <FullScreenLoadingOverlay />}
+
+      <Box
+        sx={{
+          mt: 8,
+          textAlign: "center",
+          py: 2,
+        }}
+      >
+        <Typography variant="body2" sx={{ color: "#666" }}>
+          © {new Date().getFullYear()} Made with ❤️ by Team: name1, name2, name3, name4, name5, name6
+        </Typography>
+      </Box>
     </StyledContainer>
   )
 }
