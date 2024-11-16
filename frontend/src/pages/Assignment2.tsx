@@ -38,14 +38,11 @@ const Assignment2 = () => {
   const handleSendClick = async () => {
     if (parseInt(n) > 0) {
       try {
-        const response = await fetch(
-          `${config.BACKEND_URL}/assignment2_view/`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ n }),
-          }
-        );
+        const response = await fetch(`${config.BACKEND_URL}/assignment2_view/`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ n }),
+        });
         const data = await response.json();
 
         setGaussLegendreData(data.method1);
@@ -64,7 +61,7 @@ const Assignment2 = () => {
     <>
       <StyledAppBar title="Assignment 2" />
 
-      <StyledContainer maxWidth="xl" sx={{ '::before': { top: '67px' } }}>
+      <StyledContainer maxWidth="xl" sx={{ "::before": { top: "67px" } }}>
         <Box sx={{ textAlign: "center", mb: 4, mt: -5 }}>
           <Grid
             container
