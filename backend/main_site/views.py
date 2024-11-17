@@ -133,7 +133,7 @@ def assignment2_view(request):
                 'nodes': nodes_method1.tolist(),
                 'weights': weights_method2.tolist(),
                 'plot_url': plot_url_method2,
-                'comp_mat' : companion_matrix.tolist()
+                'comp_mat' : companion_mat.tolist()
             },
         })
     return JsonResponse({"error": "Invalid request method."}, status=405)
