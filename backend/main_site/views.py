@@ -59,6 +59,7 @@ def assignment1_view(request):
         
         # 5. Solve Ax = b for two b vectors
         largest_eigenval_A = power_method(A)
+        polynomial = eigenvalue_polynomial(eigenvalues_A)
         if abs(det_A) > 10e-5:
             unique = 1
             x1 = solve(A, b1)
@@ -82,6 +83,7 @@ def assignment1_view(request):
             "largest_eigenval_A" : largest_eigenval_A,
             "largest_eigenval_A_inv" : largest_eigenval_A_inv,
             "condition_number": cond_A,
+            "polynomial" : polynomial,
             "condition_number_hilbert": cond_hilbert,
             "solution_x1": x1.tolist() if x1 is not None else [],
             "solution_x2": x2.tolist() if x2 is not None else [],
