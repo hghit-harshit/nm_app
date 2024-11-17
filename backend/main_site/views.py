@@ -132,7 +132,8 @@ def assignment2_view(request):
             'method2': {
                 'nodes': nodes_method1.tolist(),
                 'weights': weights_method2.tolist(),
-                'plot_url': plot_url_method2
+                'plot_url': plot_url_method2,
+                'comp_mat' : companion_matrix.tolist()
             },
         })
     return JsonResponse({"error": "Invalid request method."}, status=405)
@@ -209,7 +210,7 @@ def assignment3_view(request):
         P = float(data.get('P'))
         y0 = float(data.get('u0'))
         y_end = float(data.get('uEnd')) 
-        step_size = float(data.get('step_size'))
+        #step_size = float(data.get('step_size'))
         #n = int(request.POST.get('n'))
         step_size = 0.001
         # Get the plots as base64 strings
