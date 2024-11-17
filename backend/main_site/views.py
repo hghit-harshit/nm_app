@@ -66,6 +66,7 @@ def assignment1_view(request):
             x2 = solve(A, b2)
             largest_eigenval_A_inv = power_method(inv(A))
         else:
+            det_A = 0
             unique = 0
             largest_eigenval_A_inv = 0
             x1, x2 = None, None
@@ -150,6 +151,7 @@ def assignment2_view(request):
                 },
             })
         else:
+            for n in range(0,50000): print('delay')
             return JsonResponse({
                 'method1': {
                     'nodes': nodes_method1.tolist(),
