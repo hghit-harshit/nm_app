@@ -61,6 +61,7 @@ export interface Results {
   solution_x2: number[]
   largest_eigenval_A: number
   largest_eigenval_A_inv: number
+  polynomial: number[]
 }
 
 export interface GaussLegendreResults {
