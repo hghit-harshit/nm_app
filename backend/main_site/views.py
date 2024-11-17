@@ -65,7 +65,9 @@ def assignment1_view(request):
         else:
             unique = 0
             x1, x2 = None, None
-
+        
+        largest_eigenval_A = power_method(A)
+        largest_eigenval_A_inv = power_method(inv(A))
         # Prepare results to send back
         results = {
             "matrix": A.tolist(),
@@ -75,10 +77,12 @@ def assignment1_view(request):
             "iterations": iter,
             "determinant": det_A,
             "is_unique" : unique,
+            "largest_eigenval_A" : largest_eigenval_A,
+            "largest_eigenval_A_inv" : largest_eigenval_A_inv,
             "condition_number": cond_A,
             "condition_number_hilbert": cond_hilbert,
-            "solution_x1": x1.tolist() if x1 is not None else "No solution (singular matrix)",
-            "solution_x2": x2.tolist() if x2 is not None else "No solution (singular matrix)",
+            "solution_x1": x1.tolist() if x1 is not None else [],
+            "solution_x2": x2.tolist() if x2 is not None else [],
         }
 
         return JsonResponse(results)
