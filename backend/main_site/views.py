@@ -62,12 +62,15 @@ def assignment1_view(request):
             unique = 1
             x1 = solve(A, b1)
             x2 = solve(A, b2)
+            largest_eigenval_A = power_method(A)
+            largest_eigenval_A_inv = power_method(inv(A))
         else:
             unique = 0
+            largest_eigenval_A = None
+            largest_eigneval_A_inv = None
             x1, x2 = None, None
         
-        largest_eigenval_A = power_method(A)
-        largest_eigenval_A_inv = power_method(inv(A))
+        
         # Prepare results to send back
         results = {
             "matrix": A.tolist(),
