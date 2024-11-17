@@ -66,8 +66,8 @@ def assignment1_view(request):
             largest_eigenval_A_inv = power_method(inv(A))
         else:
             unique = 0
-            largest_eigenval_A = None
-            largest_eigenval_A_inv = None
+            largest_eigenval_A = 0
+            largest_eigenval_A_inv = 0
             x1, x2 = None, None
         
         
