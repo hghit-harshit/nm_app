@@ -247,11 +247,14 @@ const Assignment1 = () => {
                   <ResultCard
                     title="Solution X1"
                     mt={1}
-                    content={results.solution_x1.map((val, idx) => (
-                      <div key={idx} style={{ marginTop: 15 }}>
-                        <InlineMath math={`x_{${idx + 1}} = ${val}`} />
-                      </div>
-                    ))}
+                    content={results.solution_x1.length === 0
+                      ? 'No solution (singular matrix)'
+                      : results.solution_x1.map((val, idx) => (
+                        <div key={idx} style={{ marginTop: 15 }}>
+                          <InlineMath math={`x_{${idx + 1}} = ${val}`} />
+                        </div>
+                      ))
+                    }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.solutionX1Text)
                     }
@@ -259,11 +262,14 @@ const Assignment1 = () => {
                   />
                   <ResultCard
                     title="Solution X2"
-                    content={results.solution_x2.map((val, idx) => (
-                      <div key={idx} style={{ marginTop: 15 }}>
-                        <InlineMath math={`x_{${idx + 1}} = ${val}`} />
-                      </div>
-                    ))}
+                    content={results.solution_x2.length === 0
+                      ? 'No solution (singular matrix)'
+                      : results.solution_x2.map((val, idx) => (
+                        <div key={idx} style={{ marginTop: 15 }}>
+                          <InlineMath math={`x_{${idx + 1}} = ${val}`} />
+                        </div>
+                      ))
+                    }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.solutionX2Text)
                     }
