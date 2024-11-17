@@ -54,6 +54,7 @@ export interface Results {
   matrix: number[][]
   b1_matrix: number[]
   b2_matrix: number[]
+  is_unique: 1 | 0
   eigenvalues_A: number[]
   iterations: number
   determinant: number
@@ -80,6 +81,7 @@ export interface EquationInput {
   P: number
   u0: number
   uEnd: number
+  step_size: number
 }
 
 export interface GraphData {
@@ -87,5 +89,5 @@ export interface GraphData {
   implicit: string
   finite_difference: string
   analytical: string
-  graph5: string
+  all_graphs: string
 }

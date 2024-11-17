@@ -61,6 +61,7 @@ const Assignment1 = () => {
           condition_number_hilbert: data.condition_number_hilbert,
           solution_x1: data.solution_x1,
           solution_x2: data.solution_x2,
+          is_unique: data.is_unique,
         };
         setResults(processedResults);
       } catch (error) {
@@ -158,10 +159,10 @@ const Assignment1 = () => {
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <ResultCard
-                    title="Iterations"
-                    content={results.iterations.toString()}
+                    title="Uniqueness"
+                    content={results.is_unique === 1 ? 'Unique' : 'Not unique'}
                     onCodeClick={() =>
-                      handleCodeButtonClick(config.iterationsModalText)
+                      handleCodeButtonClick(config.uniquenessText)
                     }
                   />
                 </Grid>
@@ -245,7 +246,7 @@ const Assignment1 = () => {
                     title=""
                     content={
                       <Typography variant="body1" color="textPrimary" mt={1}>
-                        {results.condition_number > results.condition_number_hilbert
+                        {results.condition_number < results.condition_number_hilbert
                           ? 'The matrix is well conditioned'  
                           : 'The matrix is ill conditioned'
                         }

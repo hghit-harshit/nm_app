@@ -11,6 +11,7 @@ export default function Assignment3() {
     P: 5,
     u0: 10,
     uEnd: 15,
+    step_size: 10
   });
   const [graphData, setGraphData] = useState<GraphData | null>(null);
 
@@ -38,11 +39,12 @@ export default function Assignment3() {
       <StyledAppBar title="Assignment 3" />
 
       <StyledContainer maxWidth="lg" sx={{ "::before": { top: "67px" } }}>
-        <Paper elevation={3} sx={{ p: 4, mb: 4 }}>
-          <Grid container spacing={2} alignItems="center">
+        {/* <Paper elevation={3} sx={{ p: 4, mb: 4, alignContent: 'center' }}> */}
+          <Grid container spacing={2} alignItems="center" sx={{ ml: 15 }}>
             {Object.keys(inputs).map((key, index) => (
-              <Grid item xs={12} sm={3} key={key}>
+              <Grid item xs={12} sm={2} key={key}>
                 <TextField
+                  variant="filled"
                   fullWidth
                   key={index}
                   label={key}
@@ -53,9 +55,9 @@ export default function Assignment3() {
                 />
               </Grid>
             ))}
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={2}>
               <Button
-                fullWidth
+                // fullWidth
                 variant="contained"
                 color="primary"
                 onClick={handleSendClick}
@@ -65,10 +67,10 @@ export default function Assignment3() {
               </Button>
             </Grid>
           </Grid>
-        </Paper>
+        {/* </Paper> */}
 
         {graphData && (
-          <Grid container spacing={4}>
+          <Grid container spacing={4} sx={{ mt: 2 }}>
             <Grid item xs={12} md={6}>
               <Paper elevation={3} sx={{ p: 2 }}>
                 <Typography variant="h6" gutterBottom>
@@ -123,7 +125,7 @@ export default function Assignment3() {
                   Master Graph
                 </Typography>
                 <img
-                  src={`data:image/png;base64,${graphData.graph5}`}
+                  src={`data:image/png;base64,${graphData.all_graphs}`}
                   alt="Master Graph"
                   style={{ width: "100%", height: "auto" }}
                 />

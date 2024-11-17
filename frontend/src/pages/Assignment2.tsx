@@ -74,6 +74,7 @@ const Assignment2 = () => {
               <TextField
                 label="N"
                 type="number"
+                variant="filled"
                 value={n}
                 onChange={handleNChange}
                 fullWidth
