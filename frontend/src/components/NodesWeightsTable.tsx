@@ -24,11 +24,7 @@ const NodesWeightsTable = ({
   return (
     <Grid item xs={12} md={6}>
       <ResultCard
-        title={
-          type === "gl"
-            ? "Gauss-Legendre Nodes and Weights"
-            : "Lagrange Nodes and Weights"
-        }
+        title="Nodes and Weights Value"
         content={
           <TableContainer component={Paper}>
             <Table>

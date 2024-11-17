@@ -10,7 +10,7 @@ export interface AssignmentCardProps {
 export interface ResultCardProps {
   title: string
   content: ReactNode
-  onCodeClick: () => void
+  onCodeClick?: () => void
   height?: string
   mt?: number
   startIcon?: ReactNode

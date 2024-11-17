@@ -5,11 +5,15 @@ const StyledAppBar = ({ title }: AppBarProps) => {
   return (
     <AppBar position="static" sx={{ bgcolor: "#388e3c", zIndex: 2 }}>
       <Typography
-        variant="h5"
-        component="h1"
+        variant="h3"
+        component="h3"
         align="center"
         color="white"
-        sx={{ padding: 2 }}
+        sx={{
+          padding: 1,
+          fontFamily: "Markazi Text",
+          fontStyle: "normal",
+        }}
       >
         {title}
       </Typography>

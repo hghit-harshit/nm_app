@@ -11,7 +11,7 @@ const Plot = ({
 }: PlotProps) => {
   return (
     <ResultCard
-      title={type === "gl" ? "Gauss-Legendre Plot" : "Lagrange Plot"}
+      title=""
       content={
         <Box sx={{ height: 700 }}>
           <img
