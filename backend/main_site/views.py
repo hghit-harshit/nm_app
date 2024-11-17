@@ -58,15 +58,14 @@ def assignment1_view(request):
         cond_hilbert = cond(hilbert_5)
         
         # 5. Solve Ax = b for two b vectors
+        largest_eigenval_A = power_method(A)
         if abs(det_A) > 10e-5:
             unique = 1
             x1 = solve(A, b1)
             x2 = solve(A, b2)
-            largest_eigenval_A = power_method(A)
             largest_eigenval_A_inv = power_method(inv(A))
         else:
             unique = 0
-            largest_eigenval_A = 0
             largest_eigenval_A_inv = 0
             x1, x2 = None, None
         
@@ -123,26 +122,46 @@ def assignment2_view(request):
         plot_url_method1 = generate_plot(nodes_method1, weights_method1, method='for Gauss-Legendre Quadrature')
 
         # Method 2: Using another method for weights calculation (as described above)
-        coeffiecient = legendre_polynomial(n)
-        companion_mat = companion_matrix(coeffiecient)
-        nodes_method2 = np.linalg.eigvals(companion_mat)
-        weights_method2 = calculate_weights(nodes_method2)  # Method 2 placeholder (you can modify as needed)
-        plot_url_method2 = generate_plot(nodes_method2, weights_method2,method = 'using Companion Matrix and Lagrangian Interpolation')
+        if(n < 44):
+            coeffiecient = legendre_polynomial(n)
+            companion_mat = companion_matrix(coeffiecient)
+            nodes_method2 = np.linalg.eigvals(companion_mat)
+            weights_method2 = calculate_weights(nodes_method2)  # Method 2 placeholder (you can modify as needed)
+            plot_url_method2 = generate_plot(nodes_method2, weights_method2,method = 'using Companion Matrix and Lagrangian Interpolation')
+        else:
+            coeffiecient = legendre_polynomial(42)
+            companion_mat = companion_matrix(coeffiecient)
 
         # Return results as JSON
-        return JsonResponse({
-            'method1': {
-                'nodes': nodes_method1.tolist(),
-                'weights': weights_method1,
-                'plot_url': plot_url_method1
-            },
-            'method2': {
-                'nodes': nodes_method1.tolist(),
-                'weights': weights_method2.tolist(),
-                'plot_url': plot_url_method2,
-                'comp_mat' : companion_mat.tolist()
-            },
-        })
+        if( n < 44):
+            return JsonResponse({
+                'method1': {
+                    'nodes': nodes_method1.tolist(),
+                    'weights': weights_method1,
+                    'plot_url': plot_url_method1
+                },
+                'method2': {
+                    'nodes': nodes_method2.tolist(),
+                    'weights': weights_method2.tolist(),
+                    'plot_url': plot_url_method2,
+                    'comp_mat' : companion_mat.tolist()
+                },
+            })
+        else:
+            return JsonResponse({
+                'method1': {
+                    'nodes': nodes_method1.tolist(),
+                    'weights': weights_method1,
+                    'plot_url': plot_url_method1
+                },
+                'method2': {
+                    'nodes': nodes_method1.tolist(),
+                    'weights': weights_method1,
+                    'plot_url': plot_url_method1,
+                    'comp_mat' : companion_mat.tolist()
+                },
+            })
+        
     return JsonResponse({"error": "Invalid request method."}, status=405)
 
 
