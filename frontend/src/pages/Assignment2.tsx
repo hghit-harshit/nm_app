@@ -59,9 +59,9 @@ const Assignment2 = () => {
 
   return (
     <>
-      <StyledAppBar title="Assignment 2" />
+      <StyledAppBar title="Calculating the nodes and weight for Gaussian Quadrature" />
 
-      <StyledContainer maxWidth="xl" sx={{ "::before": { top: "67px" } }}>
+      <StyledContainer maxWidth="xl" sx={{ "::before": { top: "70px" } }}>
         <Box sx={{ textAlign: "center", mb: 4, mt: -5 }}>
           <Grid
             container
@@ -90,7 +90,7 @@ const Assignment2 = () => {
                     color="primary"
                   />
                 }
-                label={`${method === "gl" ? "Gauss-Legendre" : "Lagrange"}`}
+                label={`${method === "gl" ? "Jacobi Matrix" : "Companion Matrix"}`}
               />
             </Grid>
             <Grid item xs={3} sm={2}>
@@ -101,7 +101,7 @@ const Assignment2 = () => {
                 startIcon={<Send />}
                 fullWidth
               >
-                Send
+                Solve
               </Button>
             </Grid>
           </Grid>

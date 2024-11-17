@@ -1,10 +1,12 @@
 import { useState, ChangeEvent } from "react";
 import { Grid, TextField, Button, Paper, Typography } from "@mui/material";
-import { Send } from "@mui/icons-material";
+import { OpenInNew, Send, Visibility } from "@mui/icons-material";
 import StyledAppBar from "../components/StyledAppBar";
 import { EquationInput, GraphData } from "../types";
 import { StyledContainer } from "../styles/StyledContainer";
 import config from "../config.json";
+import ResultCard from "../components/ResultCard";
+import { InlineMath } from "react-katex";
 
 export default function Assignment3() {
   const [inputs, setInputs] = useState<EquationInput>({
@@ -36,9 +38,9 @@ export default function Assignment3() {
 
   return (
     <>
-      <StyledAppBar title="Assignment 3" />
+      <StyledAppBar title="Solving the ODEs using different methods" />
 
-      <StyledContainer maxWidth="lg" sx={{ "::before": { top: "67px" } }}>
+      <StyledContainer maxWidth="lg" sx={{ "::before": { top: "70px" } }}>
         <Grid container spacing={2} alignItems="center" sx={{ ml: 15 }}>
           {Object.keys(inputs).map((key, index) => (
             <Grid item xs={12} sm={2} key={key}>
@@ -65,9 +67,55 @@ export default function Assignment3() {
             </Button>
           </Grid>
         </Grid>
+        <Grid container spacing={2} alignItems="center" sx={{ ml: 20, mt: 1 }}>
+          <Grid item xs={12} sm={3}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => window.open("1.pdf", "_blank")}
+              startIcon={<Visibility />}
+              endIcon={<OpenInNew />}
+            >
+              Method Summary
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => window.open("2.pdf", "_blank")}
+              startIcon={<Visibility />}
+              endIcon={<OpenInNew />}
+            >
+              Finite Difference
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => window.open("3.pdf", "_blank")}
+              startIcon={<Visibility />}
+              endIcon={<OpenInNew />}
+            >
+              Eigenvalue
+            </Button>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={4} sx={{ mt: 3 }}>
+          <Grid item xs={12} sm={12}>
+            <ResultCard
+              title="Eigenvalue in this case is"
+              content={
+                <InlineMath math="-\frac{\sqrt{(1+\frac{P}{2})^2 - 2Pu}}{u}" />
+              }
+            />
+          </Grid>
+        </Grid>
 
         {graphData && (
-          <Grid container spacing={4} sx={{ mt: 2 }}>
+          <Grid container spacing={4} sx={{ mt: 1 }}>
             <Grid item xs={12} md={6}>
               <Paper elevation={3} sx={{ p: 2 }}>
                 <Typography variant="h6" gutterBottom>

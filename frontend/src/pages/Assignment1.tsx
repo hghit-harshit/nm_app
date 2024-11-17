@@ -79,9 +79,9 @@ const Assignment1 = () => {
 
   return (
     <>
-      <StyledAppBar title="Assignment 1" />
+      <StyledAppBar title="Matrix Eigenvalue Solver" />
 
-      <StyledContainer maxWidth="xl" sx={{ "::before": { top: "67px" } }}>
+      <StyledContainer maxWidth="xl" sx={{ "::before": { top: "70px" } }}>
         <Box sx={{ textAlign: "center", mb: 4, mt: -5 }}>
           <Button
             component="label"
@@ -118,7 +118,7 @@ const Assignment1 = () => {
                   }
                 />
               </Box>
-              <Grid container spacing={3} mt={3}>
+              <Grid container spacing={3} mt={1}>
                 <Grid item xs={12} md={12}>
                   <ResultCard
                     title="B1 Matrix"
@@ -129,6 +129,26 @@ const Assignment1 = () => {
                     }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.b1MatrixText)
+                    }
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={3} mt={1}>
+                <Grid item xs={12} md={12}>
+                  <ResultCard
+                    title="Solution X1"
+                    mt={1}
+                    content={
+                      results.solution_x1.length === 0
+                        ? "No solution (singular matrix)"
+                        : results.solution_x1.map((val, idx) => (
+                            <div key={idx} style={{ marginTop: 15 }}>
+                              <InlineMath math={`x_{${idx + 1}} = ${val}`} />
+                            </div>
+                          ))
+                    }
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.solutionX1Text)
                     }
                   />
                 </Grid>
@@ -177,7 +197,6 @@ const Assignment1 = () => {
                 <Grid item xs={12} md={6}>
                   <ResultCard
                     title="Eigenvalues"
-                    height="85%"
                     content={
                       <TableContainer
                         component={Paper}
@@ -232,7 +251,23 @@ const Assignment1 = () => {
 
                 <Grid item xs={12} md={6}>
                   <ResultCard
+                    title=""
+                    content={
+                        <Typography>
+                          {results.condition_number <
+                          results.condition_number_hilbert
+                            ? "The matrix is well conditioned"
+                            : "The matrix is ill conditioned"}
+                        </Typography>
+                    }
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.hilbertConditionNumberText)
+                    }
+                    height="10%"
+                  />
+                  <ResultCard
                     title="Condition Number"
+                    mt={1}
                     content={
                       <>
                         <Typography
@@ -243,12 +278,6 @@ const Assignment1 = () => {
                         >
                           {results.condition_number.toString()}
                         </Typography>
-                        <Typography sx={{ mt: 2 }}>
-                          {results.condition_number <
-                          results.condition_number_hilbert
-                            ? "The matrix is well conditioned"
-                            : "The matrix is ill conditioned"}
-                        </Typography>
                       </>
                     }
                     onCodeClick={() =>
@@ -257,38 +286,33 @@ const Assignment1 = () => {
                     height="20%"
                   />
                   <ResultCard
-                    title="Solution X1"
+                    title="Hilbert Condition Number"
                     mt={1}
                     content={
-                      results.solution_x1.length === 0
-                        ? "No solution (singular matrix)"
-                        : results.solution_x1.map((val, idx) => (
-                            <div key={idx} style={{ marginTop: 15 }}>
-                              <InlineMath math={`x_{${idx + 1}} = ${val}`} />
-                            </div>
-                          ))
+                      <>
+                        <Typography
+                          variant="h6"
+                          gutterBottom
+                          color="textPrimary"
+                          sx={{ fontWeight: "bold" }}
+                        >
+                          {results.condition_number_hilbert.toString()}
+                        </Typography>
+                      </>
                     }
                     onCodeClick={() =>
-                      handleCodeButtonClick(config.solutionX1Text)
+                      handleCodeButtonClick(config.hilbertConditionNumberText)
                     }
-                    height="47%"
+                    height="20%"
                   />
                   <ResultCard
-                    title="Solution X2"
-                    content={
-                      results.solution_x2.length === 0
-                        ? "No solution (singular matrix)"
-                        : results.solution_x2.map((val, idx) => (
-                            <div key={idx} style={{ marginTop: 15 }}>
-                              <InlineMath math={`x_{${idx + 1}} = ${val}`} />
-                            </div>
-                          ))
-                    }
+                    title="Characteristic Equation"
+                    content={results.largest_eigenval_A_inv.toString()}
                     onCodeClick={() =>
-                      handleCodeButtonClick(config.solutionX2Text)
+                      handleCodeButtonClick(config.largestEigenvalueAinv)
                     }
-                    height="47%"
-                    mt={2}
+                    height="30%"
+                    mt={3}
                   />
                 </Grid>
               </Grid>
