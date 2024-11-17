@@ -66,13 +66,8 @@ print("\n" * 2)
 # 2. Determinant and Uniqueness
 
 det_A = np.prod(eigenvalues_A)
-print_section("2. Determinant of A and Uniqueness of Solution")
-print(f"Determinant of A: {det_A:.6f}\n")
 
-if det_A != 0:
-    print("Result: The system has a unique solution.")
-else:
-    print("Result: The system does not have a unique solution.")
+
 
 # Add spacing between sections
 print("\n" * 2)
@@ -85,12 +80,6 @@ print("\n" * 2)
 cond_A = np.max(eigenvalues_A) / np.min(eigenvalues_A)
 hilbert_5 = hilbert(5)
 cond_hilbert = cond(hilbert_5)
-
-print_section("3. Condition Number Comparison")
-print(f"{'Condition':<30}{'Value':>15}")
-print(f"{'-'*45}")
-print(f"Condition number of A: {cond_A:>15.6f}")
-print(f"Condition number of the 5x5 Hilbert matrix: {cond_hilbert:>15.6f}")
 
 if cond_A > cond_hilbert:
     print("\nResult: A is more ill-conditioned than the Hilbert matrix.")

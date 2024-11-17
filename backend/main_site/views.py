@@ -58,10 +58,12 @@ def assignment1_view(request):
         cond_hilbert = cond(hilbert_5)
         
         # 5. Solve Ax = b for two b vectors
-        if det_A != 0:
+        if abs(det_A) > 10e-5:
+            unique = 1
             x1 = solve(A, b1)
             x2 = solve(A, b2)
         else:
+            unique = 0
             x1, x2 = None, None
 
         # Prepare results to send back
@@ -72,6 +74,7 @@ def assignment1_view(request):
             "eigenvalues_A": eigenvalues_A.tolist(),
             "iterations": iter,
             "determinant": det_A,
+            "is_unique" : unique,
             "condition_number": cond_A,
             "condition_number_hilbert": cond_hilbert,
             "solution_x1": x1.tolist() if x1 is not None else "No solution (singular matrix)",
@@ -167,6 +170,23 @@ def plot_method_graphs(P, y0, y_end, step_size):
         buf.close()
         return img_str
 
+    plt.figure(figsize=(10, 6))
+    plt.plot(y_values_bvp, u_values_bvp, label="Finilte Difference", linestyle='-', color='blue')
+    plt.plot(y_values_explicit, u_values_explicit, label="Explicit Euler", linestyle='--', color='orange')
+    plt.plot(y_values_implicit, u_values_implicit, label="Implicit Euler", linestyle=':', color='green')
+    plt.plot(y_values_analytical, u_values_analytical, label="Analytical", linestyle='-.', color='red')
+    plt.xlabel('y')
+    plt.ylabel('u(y)')
+    plt.title(f'All graphs for P = {P}')
+    plt.grid()
+    plt.legend()
+
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    img_all = base64.b64encode(buf.read()).decode('utf-8')
+    buf.close()
+    
     # Plot for Explicit Euler
     explicit_image = plot_and_save(y_values_explicit, u_values_explicit, "Explicit Euler")
     
@@ -179,7 +199,7 @@ def plot_method_graphs(P, y0, y_end, step_size):
     # Plot for Analytical Solution
     analytical_image = plot_and_save(y_values_analytical, u_values_analytical, "Analytical Solution")
 
-    return explicit_image, implicit_image, finite_difference_image, analytical_image
+    return explicit_image, implicit_image, finite_difference_image, analytical_image,img_all
 
 # View to handle the frontend display
 @csrf_exempt
@@ -188,19 +208,20 @@ def assignment3_view(request):
         data = json.loads(request.body)
         P = float(data.get('P'))
         y0 = float(data.get('u0'))
-        y_end = float(data.get('uEnd'))
-        #step_size = float(request.POST.get('step_size'))
+        y_end = float(data.get('uEnd')) 
+        step_size = float(data.get('step_size'))
         #n = int(request.POST.get('n'))
         step_size = 0.001
         # Get the plots as base64 strings
-        explicit_img, implicit_img, finite_diff_img, analytical_img = plot_method_graphs(P, y0, y_end, step_size)
+        explicit_img, implicit_img, finite_diff_img, analytical_img,img_all = plot_method_graphs(P, y0, y_end, step_size)
 
         # Return the results as JSON response
         return JsonResponse({
             'explicit': explicit_img,
             'implicit': implicit_img,
             'finite_difference': finite_diff_img,
-            'analytical': analytical_img
+            'analytical': analytical_img,
+            'all_graphs' : img_all
         })
 
     # For GET request, simply render the HTML page
