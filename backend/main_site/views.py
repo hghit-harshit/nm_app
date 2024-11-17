@@ -67,7 +67,7 @@ def assignment1_view(request):
         else:
             unique = 0
             largest_eigenval_A = None
-            largest_eigneval_A_inv = None
+            largest_eigenval_A_inv = None
             x1, x2 = None, None
         
         
