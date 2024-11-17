@@ -2,7 +2,14 @@ import { Code } from "@mui/icons-material";
 import { Card, CardContent, Box, Typography, IconButton } from "@mui/material";
 import { ResultCardProps } from "../types";
 
-const ResultCard = ({ title, content, onCodeClick, height, mt, startIcon }: ResultCardProps) => (
+const ResultCard = ({
+  title,
+  content,
+  onCodeClick,
+  height,
+  mt,
+  startIcon,
+}: ResultCardProps) => (
   <Card
     sx={{
       height: height || "100%",
@@ -16,21 +23,38 @@ const ResultCard = ({ title, content, onCodeClick, height, mt, startIcon }: Resu
     }}
   >
     <CardContent sx={{ padding: 2 }}>
-      <Box display="flex" alignItems="center" justifyContent="space-between" mb={1}>
-        <Box display="flex" alignItems="center">
-          {startIcon && (
-            <Box sx={{ mr: 1 }}>{startIcon}</Box>
-          )}
-          <Typography variant="h6" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
-            {title}
-          </Typography>
+      {title && (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          mb={1}
+        >
+          <Box display="flex" alignItems="center">
+            {startIcon && <Box sx={{ mr: 1 }}>{startIcon}</Box>}
+            <Typography
+              variant="h6"
+              gutterBottom
+              color="primary"
+              sx={{ fontWeight: "bold" }}
+            >
+              {title}
+            </Typography>
+          </Box>
+          <IconButton
+            onClick={onCodeClick}
+            sx={{ color: "secondary.main", alignSelf: "center", p: 0.5 }}
+            aria-label="code"
+          >
+            <Code fontSize="medium" />
+          </IconButton>
         </Box>
-        <IconButton onClick={onCodeClick} sx={{ color: "secondary.main", alignSelf: "center", p: 0.5 }} aria-label="code">
-          <Code fontSize="medium" />
-        </IconButton>
-      </Box>
+      )}
 
-      <Typography variant="body1" sx={{ fontSize: "1.1rem", fontWeight: "bold" }}>
+      <Typography
+        variant="body1"
+        sx={{ fontSize: "1.1rem", fontWeight: "bold" }}
+      >
         {content}
       </Typography>
     </CardContent>

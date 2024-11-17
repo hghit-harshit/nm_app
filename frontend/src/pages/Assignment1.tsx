@@ -187,6 +187,7 @@ const Assignment1 = () => {
                 <Grid item xs={12} md={6}>
                   <ResultCard
                     title="Eigenvalues"
+                    height="85%"
                     content={
                       <TableContainer
                         component={Paper}
@@ -240,18 +241,24 @@ const Assignment1 = () => {
                 </Grid>
 
                 <Grid item xs={12} md={6}>
-                  {/* <ResultCard
-                    title="Solution X1"
-                    content={results.solution_x1.map((val, idx) => (
-                      <b>hi</b>
-                    ))}
+                  <ResultCard
+                    title=""
+                    content={
+                      <Typography variant="body1" color="textPrimary" mt={1}>
+                        {results.condition_number > results.condition_number_hilbert
+                          ? 'The matrix is well conditioned'  
+                          : 'The matrix is ill conditioned'
+                        }
+                      </Typography>
+                    }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.solutionX1Text)
                     }
                     height="10%"
-                  /> */}
+                  />
                   <ResultCard
                     title="Solution X1"
+                    mt={1}
                     content={results.solution_x1.map((val, idx) => (
                       <div key={idx} style={{ marginTop: 15 }}>
                         <InlineMath math={`x_{${idx + 1}} = ${val}`} />
@@ -260,7 +267,7 @@ const Assignment1 = () => {
                     onCodeClick={() =>
                       handleCodeButtonClick(config.solutionX1Text)
                     }
-                    height="50%"
+                    height="47%"
                   />
                   <ResultCard
                     title="Solution X2"
