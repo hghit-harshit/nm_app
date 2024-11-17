@@ -75,3 +75,17 @@ export interface LangrangeResults {
   plot_url: string
   matrix: number[][]
 }
+
+export interface EquationInput {
+  P: number
+  u0: number
+  uEnd: number
+}
+
+export interface GraphData {
+  explicit: string
+  implicit: string
+  finite_difference: string
+  analytical: string
+  graph5: string
+}

@@ -3,7 +3,7 @@ import { AppBarProps } from "../types";
 
 const StyledAppBar = ({ title }: AppBarProps) => {
   return (
-    <AppBar position="static" sx={{ bgcolor: "#388e3c" }}>
+    <AppBar position="static" sx={{ bgcolor: "#388e3c", zIndex: 2 }}>
       <Typography
         variant="h5"
         component="h1"

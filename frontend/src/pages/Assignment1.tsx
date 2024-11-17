@@ -2,7 +2,6 @@ import { ChangeEvent, useState } from "react";
 import {
   Box,
   Button,
-  Container,
   Grid,
   Typography,
   Table,
@@ -20,7 +19,11 @@ import { CloudUpload } from "@mui/icons-material";
 import CodeDialog from "../components/CodeDialog";
 import StyledAppBar from "../components/StyledAppBar";
 import ResultCard from "../components/ResultCard";
-import { multiDimMatrixToLatex, singleDimMatrixToLatex } from "../utils/latexConversion";
+import {
+  multiDimMatrixToLatex,
+  singleDimMatrixToLatex,
+} from "../utils/latexConversion";
+import { StyledContainer } from "../styles/StyledContainer";
 
 const Assignment1 = () => {
   const [results, setResults] = useState<Results | null>(null);
@@ -75,8 +78,8 @@ const Assignment1 = () => {
     <>
       <StyledAppBar title="Assignment 1" />
 
-      <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-        <Box sx={{ textAlign: "center", mb: 4 }}>
+      <StyledContainer maxWidth="xl" sx={{ "::before": { top: "67px" } }}>
+        <Box sx={{ textAlign: "center", mb: 4, mt: -5 }}>
           <Button
             component="label"
             variant="contained"
@@ -104,25 +107,41 @@ const Assignment1 = () => {
               <Box mt={0}>
                 <ResultCard
                   title="Input Matrix A"
-                  content={<InlineMath math={multiDimMatrixToLatex(results.matrix)} />}
-                  onCodeClick={() => handleCodeButtonClick(config.inputMatrixText)}
+                  content={
+                    <InlineMath math={multiDimMatrixToLatex(results.matrix)} />
+                  }
+                  onCodeClick={() =>
+                    handleCodeButtonClick(config.inputMatrixText)
+                  }
                 />
               </Box>
               <Grid container spacing={3} mt={3}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={12}>
                   <ResultCard
                     title="B1 Matrix"
-                    content={<InlineMath math={singleDimMatrixToLatex(results.b1_matrix)} />}
-                    onCodeClick={() => handleCodeButtonClick(config.b1MatrixText)}
+                    content={
+                      <InlineMath
+                        math={singleDimMatrixToLatex(results.b1_matrix)}
+                      />
+                    }
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.b1MatrixText)
+                    }
                   />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                {/* <Grid item xs={12} md={6}>
                   <ResultCard
                     title="B2 Matrix"
-                    content={<InlineMath math={singleDimMatrixToLatex(results.b2_matrix)} />}
-                    onCodeClick={() => handleCodeButtonClick(config.b2MatrixText)}
+                    content={
+                      <InlineMath
+                        math={singleDimMatrixToLatex(results.b2_matrix)}
+                      />
+                    }
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.b2MatrixText)
+                    }
                   />
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
 
@@ -141,21 +160,27 @@ const Assignment1 = () => {
                   <ResultCard
                     title="Iterations"
                     content={results.iterations.toString()}
-                    onCodeClick={() => handleCodeButtonClick(config.iterationsModalText)}
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.iterationsModalText)
+                    }
                   />
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <ResultCard
                     title="Condition Number"
                     content={results.condition_number.toString()}
-                    onCodeClick={() => handleCodeButtonClick(config.conditionNumberText)}
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.conditionNumberText)
+                    }
                   />
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <ResultCard
                     title="Hilbert Condition Number"
                     content={results.condition_number_hilbert.toString()}
-                    onCodeClick={() => handleCodeButtonClick(config.hilbertConditionNumberText)}
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.hilbertConditionNumberText)
+                    }
                   />
                 </Grid>
 
@@ -163,15 +188,43 @@ const Assignment1 = () => {
                   <ResultCard
                     title="Eigenvalues"
                     content={
-                      <TableContainer component={Paper} sx={{ maxWidth: 500, boxShadow: 3, borderRadius: 2, mt: 2 }}>
+                      <TableContainer
+                        component={Paper}
+                        sx={{
+                          maxWidth: 500,
+                          boxShadow: 3,
+                          borderRadius: 2,
+                          mt: 2,
+                        }}
+                      >
                         <Table>
                           <TableBody>
                             {results.eigenvalues_A.map((val, idx) => (
-                              <TableRow key={idx} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell align="center" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+                              <TableRow
+                                key={idx}
+                                sx={{
+                                  "&:last-child td, &:last-child th": {
+                                    border: 0,
+                                  },
+                                }}
+                              >
+                                <TableCell
+                                  align="center"
+                                  sx={{
+                                    fontWeight: "bold",
+                                    fontSize: "1.1rem",
+                                  }}
+                                >
                                   <BlockMath math={`\\lambda_${idx + 1}`} />
                                 </TableCell>
-                                <TableCell align="right" sx={{ fontWeight: 'bold', fontSize: '1.1rem', pr: 2 }}>
+                                <TableCell
+                                  align="right"
+                                  sx={{
+                                    fontWeight: "bold",
+                                    fontSize: "1.1rem",
+                                    pr: 2,
+                                  }}
+                                >
                                   <BlockMath math={val.toFixed(4).toString()} />
                                 </TableCell>
                               </TableRow>
@@ -180,11 +233,23 @@ const Assignment1 = () => {
                         </Table>
                       </TableContainer>
                     }
-                    onCodeClick={() => handleCodeButtonClick(config.eigenvaluesModalText)}
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.eigenvaluesModalText)
+                    }
                   />
                 </Grid>
 
                 <Grid item xs={12} md={6}>
+                  {/* <ResultCard
+                    title="Solution X1"
+                    content={results.solution_x1.map((val, idx) => (
+                      <b>hi</b>
+                    ))}
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.solutionX1Text)
+                    }
+                    height="10%"
+                  /> */}
                   <ResultCard
                     title="Solution X1"
                     content={results.solution_x1.map((val, idx) => (
@@ -192,7 +257,9 @@ const Assignment1 = () => {
                         <InlineMath math={`x_{${idx + 1}} = ${val}`} />
                       </div>
                     ))}
-                    onCodeClick={() => handleCodeButtonClick(config.solutionX1Text)}
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.solutionX1Text)
+                    }
                     height="50%"
                   />
                   <ResultCard
@@ -202,7 +269,9 @@ const Assignment1 = () => {
                         <InlineMath math={`x_{${idx + 1}} = ${val}`} />
                       </div>
                     ))}
-                    onCodeClick={() => handleCodeButtonClick(config.solutionX2Text)}
+                    onCodeClick={() =>
+                      handleCodeButtonClick(config.solutionX2Text)
+                    }
                     height="47%"
                     mt={2}
                   />
@@ -211,7 +280,7 @@ const Assignment1 = () => {
             </Grid>
           </Grid>
         )}
-      </Container>
+      </StyledContainer>
 
       <CodeDialog
         dialogContent={dialogContent}
