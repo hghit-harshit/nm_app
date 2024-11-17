@@ -62,6 +62,8 @@ const Assignment1 = () => {
           solution_x1: data.solution_x1,
           solution_x2: data.solution_x2,
           is_unique: data.is_unique,
+          largest_eigenval_A: data.largest_eigenval_A,
+          largest_eigenval_A_inv: data.largest_eigenval_A_inv,
         };
         setResults(processedResults);
       } catch (error) {
@@ -147,7 +149,7 @@ const Assignment1 = () => {
                 <Grid item xs={12} md={3}>
                   <ResultCard
                     title="Uniqueness"
-                    content={results.is_unique === 1 ? 'Unique' : 'Not unique'}
+                    content={results.is_unique === 1 ? "Unique" : "Not unique"}
                     onCodeClick={() =>
                       handleCodeButtonClick(config.uniquenessText)
                     }
@@ -155,19 +157,19 @@ const Assignment1 = () => {
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <ResultCard
-                    title="Condition Number"
-                    content={results.condition_number.toString()}
+                    title="Largest Eigenvalue of Matrix A"
+                    content={results.largest_eigenval_A.toString()}
                     onCodeClick={() =>
-                      handleCodeButtonClick(config.conditionNumberText)
+                      handleCodeButtonClick(config.largestEigenvalueA)
                     }
                   />
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <ResultCard
-                    title="Hilbert Condition Number"
-                    content={results.condition_number_hilbert.toString()}
+                    title="Largest Eigenvalue of Matrix A Inverse"
+                    content={results.largest_eigenval_A_inv.toString()}
                     onCodeClick={() =>
-                      handleCodeButtonClick(config.hilbertConditionNumberText)
+                      handleCodeButtonClick(config.largestEigenvalueAinv)
                     }
                   />
                 </Grid>
@@ -230,30 +232,41 @@ const Assignment1 = () => {
 
                 <Grid item xs={12} md={6}>
                   <ResultCard
-                    title=""
+                    title="Condition Number"
                     content={
-                      <Typography variant="body1" color="textPrimary" mt={1}>
-                        {results.condition_number < results.condition_number_hilbert
-                          ? 'The matrix is well conditioned'  
-                          : 'The matrix is ill conditioned'
-                        }
-                      </Typography>
+                      <>
+                        <Typography
+                          variant="h6"
+                          gutterBottom
+                          color="textPrimary"
+                          sx={{ fontWeight: "bold" }}
+                        >
+                          {results.condition_number.toString()}
+                        </Typography>
+                        <Typography sx={{ mt: 2 }}>
+                          {results.condition_number <
+                          results.condition_number_hilbert
+                            ? "The matrix is well conditioned"
+                            : "The matrix is ill conditioned"}
+                        </Typography>
+                      </>
                     }
                     onCodeClick={() =>
-                      handleCodeButtonClick(config.solutionX1Text)
+                      handleCodeButtonClick(config.conditionNumberText)
                     }
-                    height="10%"
+                    height="20%"
                   />
                   <ResultCard
                     title="Solution X1"
                     mt={1}
-                    content={results.solution_x1.length === 0
-                      ? 'No solution (singular matrix)'
-                      : results.solution_x1.map((val, idx) => (
-                        <div key={idx} style={{ marginTop: 15 }}>
-                          <InlineMath math={`x_{${idx + 1}} = ${val}`} />
-                        </div>
-                      ))
+                    content={
+                      results.solution_x1.length === 0
+                        ? "No solution (singular matrix)"
+                        : results.solution_x1.map((val, idx) => (
+                            <div key={idx} style={{ marginTop: 15 }}>
+                              <InlineMath math={`x_{${idx + 1}} = ${val}`} />
+                            </div>
+                          ))
                     }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.solutionX1Text)
@@ -262,13 +275,14 @@ const Assignment1 = () => {
                   />
                   <ResultCard
                     title="Solution X2"
-                    content={results.solution_x2.length === 0
-                      ? 'No solution (singular matrix)'
-                      : results.solution_x2.map((val, idx) => (
-                        <div key={idx} style={{ marginTop: 15 }}>
-                          <InlineMath math={`x_{${idx + 1}} = ${val}`} />
-                        </div>
-                      ))
+                    content={
+                      results.solution_x2.length === 0
+                        ? "No solution (singular matrix)"
+                        : results.solution_x2.map((val, idx) => (
+                            <div key={idx} style={{ marginTop: 15 }}>
+                              <InlineMath math={`x_{${idx + 1}} = ${val}`} />
+                            </div>
+                          ))
                     }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.solutionX2Text)

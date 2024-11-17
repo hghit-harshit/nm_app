@@ -59,6 +59,8 @@ export interface Results {
   condition_number_hilbert: number
   solution_x1: number[]
   solution_x2: number[]
+  largest_eigenval_A: number
+  largest_eigenval_A_inv: number
 }
 
 export interface GaussLegendreResults {
