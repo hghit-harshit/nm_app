@@ -155,7 +155,7 @@ def eigenvalue_polynomial(eigenvalues):
     # Create a readable polynomial equation
     characteristic_polynomial = np.poly1d(polynomial_coefficients)
     
-    return characteristic_polynomial
+    return polynomial_coefficients
 
 
 
