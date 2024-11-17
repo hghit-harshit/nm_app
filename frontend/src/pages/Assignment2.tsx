@@ -114,7 +114,6 @@ const Assignment2 = () => {
                 <NodesWeightsTable
                   data={method === "l" ? lagrangeData : gaussLegendreData}
                   type={method}
-                  setOpenModal={setOpenModal}
                   handleCodeButtonClick={setDialogContent}
                   setOpenDialog={setOpenDialog}
                 />
@@ -153,8 +152,6 @@ const Assignment2 = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         langrangeData={lagrangeData}
-        handleCodeButtonClick={setDialogContent}
-        setOpenDialog={setOpenDialog}
       />
       <CodeDialog
         dialogContent={dialogContent}

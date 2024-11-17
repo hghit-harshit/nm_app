@@ -130,19 +130,6 @@ const Assignment1 = () => {
                     }
                   />
                 </Grid>
-                {/* <Grid item xs={12} md={6}>
-                  <ResultCard
-                    title="B2 Matrix"
-                    content={
-                      <InlineMath
-                        math={singleDimMatrixToLatex(results.b2_matrix)}
-                      />
-                    }
-                    onCodeClick={() =>
-                      handleCodeButtonClick(config.b2MatrixText)
-                    }
-                  />
-                </Grid> */}
               </Grid>
             </Grid>
 

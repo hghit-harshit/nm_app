@@ -11,7 +11,7 @@ export default function Assignment3() {
     P: 5,
     u0: 10,
     uEnd: 15,
-    step_size: 10
+    step_size: 10,
   });
   const [graphData, setGraphData] = useState<GraphData | null>(null);
 
@@ -39,35 +39,32 @@ export default function Assignment3() {
       <StyledAppBar title="Assignment 3" />
 
       <StyledContainer maxWidth="lg" sx={{ "::before": { top: "67px" } }}>
-        {/* <Paper elevation={3} sx={{ p: 4, mb: 4, alignContent: 'center' }}> */}
-          <Grid container spacing={2} alignItems="center" sx={{ ml: 15 }}>
-            {Object.keys(inputs).map((key, index) => (
-              <Grid item xs={12} sm={2} key={key}>
-                <TextField
-                  variant="filled"
-                  fullWidth
-                  key={index}
-                  label={key}
-                  type="number"
-                  name={key}
-                  value={inputs[key as keyof typeof inputs]}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-            ))}
-            <Grid item xs={12} sm={2}>
-              <Button
-                // fullWidth
-                variant="contained"
-                color="primary"
-                onClick={handleSendClick}
-                startIcon={<Send />}
-              >
-                Send
-              </Button>
+        <Grid container spacing={2} alignItems="center" sx={{ ml: 15 }}>
+          {Object.keys(inputs).map((key, index) => (
+            <Grid item xs={12} sm={2} key={key}>
+              <TextField
+                variant="filled"
+                fullWidth
+                key={index}
+                label={key}
+                type="number"
+                name={key}
+                value={inputs[key as keyof typeof inputs]}
+                onChange={handleInputChange}
+              />
             </Grid>
+          ))}
+          <Grid item xs={12} sm={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSendClick}
+              startIcon={<Send />}
+            >
+              Send
+            </Button>
           </Grid>
-        {/* </Paper> */}
+        </Grid>
 
         {graphData && (
           <Grid container spacing={4} sx={{ mt: 2 }}>
