@@ -72,7 +72,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.location.href = '/assets/1.pdf'}
+              onClick={() => window.location.href = 'https://drive.google.com/file/d/1MbhFjkUzv1yOEEKPv9L-YkHHLBLNGTLQ/view?usp=drive_link'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >
@@ -83,7 +83,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.location.href = '/assets/2.pdf'}
+              onClick={() => window.location.href = 'https://drive.google.com/file/d/1yC6aTpQ6sN81k8u15mo03jPx9QP9P3_U/view?usp=drive_link'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >
@@ -94,7 +94,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.location.href = '/assets/3.pdf'}
+              onClick={() => window.location.href = 'https://drive.google.com/file/d/1lLSPwubnBYBYdIvsEgrM_C7nZx79aPah/view?usp=drive_link'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >
