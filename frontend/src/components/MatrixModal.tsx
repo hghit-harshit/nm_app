@@ -23,7 +23,7 @@ const MatrixModal = ({
         }}
       >
         <Typography variant="h6" component="h2" mb={2}>
-          Lagrange Matrix
+          Companion Matrix
         </Typography>
         {langrangeData && (
           <Box>

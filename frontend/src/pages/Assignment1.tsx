@@ -64,6 +64,7 @@ const Assignment1 = () => {
           is_unique: data.is_unique,
           largest_eigenval_A: data.largest_eigenval_A,
           largest_eigenval_A_inv: data.largest_eigenval_A_inv,
+          polynomial: data.polynomial,
         };
         setResults(processedResults);
       } catch (error) {
@@ -253,12 +254,12 @@ const Assignment1 = () => {
                   <ResultCard
                     title=""
                     content={
-                        <Typography>
-                          {results.condition_number <
-                          results.condition_number_hilbert
-                            ? "The matrix is well conditioned"
-                            : "The matrix is ill conditioned"}
-                        </Typography>
+                      <Typography>
+                        {results.condition_number <
+                        results.condition_number_hilbert
+                          ? "The matrix is well conditioned"
+                          : "The matrix is ill conditioned"}
+                      </Typography>
                     }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.hilbertConditionNumberText)
@@ -307,7 +308,22 @@ const Assignment1 = () => {
                   />
                   <ResultCard
                     title="Characteristic Equation"
-                    content={results.largest_eigenval_A_inv.toString()}
+                    content={
+                      <InlineMath
+                        math={`
+                        ${results.polynomial
+                          .map((coeff, index) => {
+                            const power = 5 - index;
+                            if (coeff === 0) return "";
+                            const sign = coeff > 0 && index > 0 ? "+" : "";
+                            return `${sign}${coeff}${
+                              power > 0 ? `x^${power}` : ""
+                            }`;
+                          })
+                          .join(" ")}
+                      `}
+                      />
+                    }
                     onCodeClick={() =>
                       handleCodeButtonClick(config.largestEigenvalueAinv)
                     }

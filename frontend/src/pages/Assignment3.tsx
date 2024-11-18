@@ -72,7 +72,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.open("1.pdf", "_blank")}
+              onClick={() => window.location.href = '/assets/1.pdf'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >
@@ -83,7 +83,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.open("2.pdf", "_blank")}
+              onClick={() => window.location.href = '/assets/2.pdf'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >
@@ -94,7 +94,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.open("3.pdf", "_blank")}
+              onClick={() => window.location.href = '/assets/3.pdf'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >
