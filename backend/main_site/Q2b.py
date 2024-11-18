@@ -2,6 +2,7 @@ import numpy as np
 from .equilibria import *
 import matplotlib.pyplot as plt
 import matplotlib
+from sympy import Rational
 matplotlib.use('Agg')
 
 # Utility functions for polynomial operations
@@ -55,6 +56,20 @@ def companion_matrix(coefficients):
         matrix[i, i + 1] = 1
     for j in range(degree):
         matrix[degree - 1, j] = -coefficients[j] / coefficients[degree]
+
+    return matrix
+def fcompanion_matrix(coefficients):
+    """Constructs the companion matrix for a polynomial given its coefficients in fractions."""
+    degree = len(coefficients) - 1
+    matrix = np.zeros((degree, degree), dtype=object)  # Initialize matrix with object type to store fractions
+
+    for i in range(degree - 1):
+        # Fill in the first column for the companion matrix
+        matrix[i, i + 1] = Rational(1, 1)  # 1 in fraction form
+
+    # Fill in the last row for the companion matrix
+    for j in range(degree):
+        matrix[degree - 1, j] = Rational(-coefficients[j], coefficients[degree])
 
     return matrix
 

@@ -72,7 +72,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.location.href = '/assets/1.pdf'}
+              onClick={() => window.location.href = '/assets/1.PDF'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >
@@ -94,7 +94,7 @@ export default function Assignment3() {
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => window.location.href = '/assets/3.pdf'}
+              onClick={() => window.location.href = 'assets/3.pdf'}
               startIcon={<Visibility />}
               endIcon={<OpenInNew />}
             >

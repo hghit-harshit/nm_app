@@ -112,7 +112,7 @@ def u_y(y, P):
     elif P == 2:
         return -y**2 + 2*y
     elif P == 5:
-        return -(5/2) * y**2 + 3*y
+        return -(5/2) * y**2 +(7/2)*y
     elif P == 10:
         return -5 * y**2 + 6*y
 # Function to calculate eigenvalues for both methods

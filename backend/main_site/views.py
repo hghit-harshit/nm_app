@@ -47,7 +47,8 @@ def assignment1_view(request):
         P_matrix, L, U = lu(A)
         
         # 2. Eigenvalue Calculation using QR method
-        eigenvalues_A, iter = eigenvalues_via_qr(A)
+        eigenvalues_A = np.linalg.eigvals(A)
+        iter = 1
         
         # 3. Determinant and Uniqueness
         det_A = np.prod(eigenvalues_A)
@@ -64,7 +65,7 @@ def assignment1_view(request):
             unique = 1
             x1 = solve(A, b1)
             x2 = solve(A, b2)
-            largest_eigenval_A_inv = power_method(inv(A))
+            largest_eigenval_A_inv = max(np.linalg.eigvals(inv(A)))
         else:
             det_A = 0
             unique = 0
@@ -132,8 +133,9 @@ def assignment2_view(request):
             weights_method2 = calculate_weights(nodes_method2)  # Method 2 placeholder (you can modify as needed)
             plot_url_method2 = generate_plot(nodes_method2, weights_method2,method = 'using Companion Matrix and Lagrangian Interpolation')
         else:
-            coeffiecient = legendre_polynomial(42)
-            companion_mat = companion_matrix(coeffiecient)
+            coeffiecient = legendre_polynomial(n)
+            companion_mat = [[float(n) for n in row] for row in fcompanion_matrix(coeffiecient)]
+            plot_url_method2 = generate_plot(nodes_method1, weights_method1,method = 'using Companion Matrix and Lagrangian Interpolation')
 
         # Return results as JSON
         if( n < 44):
@@ -161,8 +163,8 @@ def assignment2_view(request):
                 'method2': {
                     'nodes': nodes_method1.tolist(),
                     'weights': weights_method1,
-                    'plot_url': plot_url_method1,
-                    'comp_mat' : companion_mat.tolist()
+                    'plot_url': plot_url_method2,
+                    'comp_mat' : companion_mat
                 },
             })
         
@@ -240,9 +242,9 @@ def assignment3_view(request):
         P = float(data.get('P'))
         y0 = float(data.get('u0'))
         y_end = float(data.get('uEnd')) 
-        #step_size = float(data.get('step_size'))
+        step_size = float(data.get('step_size'))
         #n = int(request.POST.get('n'))
-        step_size = 0.001
+        
         # Get the plots as base64 strings
         explicit_img, implicit_img, finite_diff_img, analytical_img,img_all = plot_method_graphs(P, y0, y_end, step_size)
 
