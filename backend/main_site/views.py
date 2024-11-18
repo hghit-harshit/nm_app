@@ -84,7 +84,7 @@ def assignment1_view(request):
             "largest_eigenval_A" : largest_eigenval_A,
             "largest_eigenval_A_inv" : largest_eigenval_A_inv,
             "condition_number": cond_A,
-            "polynomial" : polynomial,
+            "polynomial" : polynomial.tolist(),
             "condition_number_hilbert": cond_hilbert,
             "solution_x1": x1.tolist() if x1 is not None else [],
             "solution_x2": x2.tolist() if x2 is not None else [],
